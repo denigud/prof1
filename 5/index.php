@@ -1,3 +1,4 @@
+<?php include __DIR__."/functions.php" ?>
 <!doctype html>
 <html lang="ru">
 <head>
