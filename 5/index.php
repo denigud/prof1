@@ -10,5 +10,38 @@
 </head>
 <body>
 
+<?php
+
+//$users = [];
+//$users[] = 'admin';
+//$users[] = password_hash('234567890', PASSWORD_DEFAULT);
+//$users[] = 'user';
+//$users[] = password_hash('123',PASSWORD_DEFAULT);
+//$users[] = 'root';
+//$users[] = password_hash('123456', PASSWORD_DEFAULT);
+//$users[] = 'sys';
+//$users[] = password_hash('159753', PASSWORD_DEFAULT);
+//
+//file_put_contents(__DIR__.'/data.txt', implode("\n", $users));
+//echo '<pre>';
+//var_dump(getUsersList());
+//echo '</pre>';
+//
+//echo '<pre>';
+//echo existsUser("admin");
+//echo '</pre>';
+//
+//echo '<pre>';
+//echo сheckPassword("user", "123");
+//echo '</pre>';
+
+echo '<pre>';
+echo getCurrentUser();
+echo '</pre>';
+
+?>
+
+
+
 </body>
 </html>
