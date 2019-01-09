@@ -1,7 +1,19 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: Gudz.DO
- * Date: 09.01.2019
- * Time: 15:55
- */
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+</head>
+<body>
+
+<form action="/5/authentication.php" method="POST">
+    <input type="text" name="login" title="Login">
+    <input type="password" name="password" title="password">
+    <input type="submit" value="Войти">
+</form>
+
+</body>
+</html>

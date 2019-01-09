@@ -1,4 +1,17 @@
-<?php include __DIR__."/functions.php" ?>
+<?php
+
+include_once __DIR__."/functions.php";
+
+
+echo getCurrentUser();
+
+if (getCurrentUser() == NULL){
+
+    header('Location: /5/login.php');
+    exit;
+};
+
+?>
 <!doctype html>
 <html lang="ru">
 <head>
@@ -35,9 +48,8 @@
 //echo сheckPassword("user", "123");
 //echo '</pre>';
 
-echo '<pre>';
-echo getCurrentUser();
-echo '</pre>';
+
+
 
 ?>
 
