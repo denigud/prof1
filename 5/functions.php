@@ -29,15 +29,12 @@ function сheckPassword($login, $password)
   if (existsUser($login)){
       $users = getUsersList();
       if(password_verify($password, $users[$login])) {
-          $_SESSION['user'] = $login;
           return true;
       }else {
           return false;
       };
-  };
-  $_SESSION['user'] = null;
+  }
   return false;
-
 }
 
 function getCurrentUser()

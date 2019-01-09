@@ -1,3 +1,8 @@
+<?php
+session_start();
+include_once __DIR__."/functions.php";
+?>
+
 <!doctype html>
 <html lang="ru">
 <head>
@@ -9,11 +14,23 @@
 </head>
 <body>
 
-<form action="/5/authentication.php" method="POST">
+<?php
+if(сheckPassword($_POST['login'], $_POST['password'])){
+    $_SESSION['user'] = $_POST['login'];
+    echo "login " . $_SESSION['user'];
+    header('Location: /5/');
+}else{
+?>
+<form action="/5/login.php" method="POST">
     <input type="text" name="login" title="Login">
     <input type="password" name="password" title="password">
-    <input type="submit" value="Войти">
+    <button type="submit">Войти</button>
 </form>
+<?php
+};
+?>
+
+
 
 </body>
 </html>

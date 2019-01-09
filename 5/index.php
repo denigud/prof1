@@ -1,12 +1,10 @@
 <?php
+session_start();
 
 include_once __DIR__."/functions.php";
 
-
-echo getCurrentUser();
-
-if (getCurrentUser() == NULL){
-
+echo "index " . $_SESSION['user'];
+if (NULL == getCurrentUser()){
     header('Location: /5/login.php');
     exit;
 };
@@ -25,7 +23,9 @@ if (getCurrentUser() == NULL){
 
 <?php
 
-//$users = [];
+echo getCurrentUser();
+
+//$use/*rs = [];
 //$users[] = 'admin';
 //$users[] = password_hash('234567890', PASSWORD_DEFAULT);
 //$users[] = 'user';
@@ -33,7 +33,7 @@ if (getCurrentUser() == NULL){
 //$users[] = 'root';
 //$users[] = password_hash('123456', PASSWORD_DEFAULT);
 //$users[] = 'sys';
-//$users[] = password_hash('159753', PASSWORD_DEFAULT);
+//$users[*/] = password_hash('159753', PASSWORD_DEFAULT);
 //
 //file_put_contents(__DIR__.'/data.txt', implode("\n", $users));
 //echo '<pre>';
