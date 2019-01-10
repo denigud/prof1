@@ -25,11 +25,14 @@ if(сheckPassword($_POST['login'], $_POST['password'])) {
 //    header('Location: /5/');
 //}else{
 ?>
-<form action="/5/login.php" method="POST">
-    <input type="text" name="login" title="Login">
-    <input type="password" name="password" title="password">
-    <button type="submit">Войти</button>
-</form>
+<div>
+    <form action="/5/login.php" method="POST">
+        <input type="text" name="login" title="Login">
+        <input type="password" name="password" title="password">
+        <button type="submit">Войти</button>
+    </form>
+</div>
+<br>
 <?php
 //};
 ?>

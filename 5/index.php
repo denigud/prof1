@@ -1,13 +1,16 @@
 <?php
 session_start();
 include_once __DIR__."/functions.php";
+include_once __DIR__."/data.php";
+
 
 if(key_exists("session_destroy", $_POST) && NULL != getCurrentUser()){
     $_SESSION['user'] = null;
 }
 
 if (NULL == getCurrentUser()){
-    header('Location: /5/login.php');
+    include_once __DIR__."/login.php";
+    //header('Location: /5/login.php');
 };
 
 ?>
@@ -22,12 +25,30 @@ if (NULL == getCurrentUser()){
 </head>
 <body>
 <?php
-echo getCurrentUser();
 if(NULL != getCurrentUser()):
 ?>
+
 <form action="/5/" method="POST">
+    <?= getCurrentUser(); ?>
     <button type="submit" name="session_destroy">Выйти</button>
 </form>
+<br>
+<div>
+    <form action="/5/upload.php" method="post" enctype="multipart/form-data">
+        <input type="file" name="myimg">
+        <button type="submit">Отправить</button>
+    </form>
+</div>
+<br>
 <?php endif; ?>
+
+
+
+
+<?php $images = getFilesFromDir();?>
+<?php foreach ($images as $image) :?>
+    <a href="/5/images/<?php echo $image ?>"><img src="/5/images/<?php echo $image ?>" alt="" height="200px;"></a>
+<?php endforeach;?>
+
 </body>
 </html>

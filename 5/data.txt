@@ -1,0 +1,8 @@
+admin
+$2y$10$kFxYHtQTVBhPpX51.4Pk1.85VE3.wueAjuEJBLtaKga5ZxkWMXsTu
+user
+$2y$10$Sx16WHiktPHjorLZrYq41.MLuAtWymrDmr96ovS4.QSnmDOlDHOxq
+root
+$2y$10$705FIfAx8UCRVMsPHc68VOb9mlxey.t7viV4xg1yA.sGVAUmMHAry
+sys
+$2y$10$o31360.sB/YK.zufb/y7He2o.ad3V9oLyxrZ2VbyL2xqhaW5bVbii
