@@ -1,12 +1,13 @@
 <?php
 session_start();
-
 include_once __DIR__."/functions.php";
 
-echo "index " . $_SESSION['user'];
+if(key_exists("session_destroy", $_POST) && NULL != getCurrentUser()){
+    $_SESSION['user'] = null;
+}
+
 if (NULL == getCurrentUser()){
     header('Location: /5/login.php');
-    exit;
 };
 
 ?>
@@ -20,40 +21,13 @@ if (NULL == getCurrentUser()){
     <title>5</title>
 </head>
 <body>
-
 <?php
-
 echo getCurrentUser();
-
-//$use/*rs = [];
-//$users[] = 'admin';
-//$users[] = password_hash('234567890', PASSWORD_DEFAULT);
-//$users[] = 'user';
-//$users[] = password_hash('123',PASSWORD_DEFAULT);
-//$users[] = 'root';
-//$users[] = password_hash('123456', PASSWORD_DEFAULT);
-//$users[] = 'sys';
-//$users[*/] = password_hash('159753', PASSWORD_DEFAULT);
-//
-//file_put_contents(__DIR__.'/data.txt', implode("\n", $users));
-//echo '<pre>';
-//var_dump(getUsersList());
-//echo '</pre>';
-//
-//echo '<pre>';
-//echo existsUser("admin");
-//echo '</pre>';
-//
-//echo '<pre>';
-//echo сheckPassword("user", "123");
-//echo '</pre>';
-
-
-
-
+if(NULL != getCurrentUser()):
 ?>
-
-
-
+<form action="/5/" method="POST">
+    <button type="submit" name="session_destroy">Выйти</button>
+</form>
+<?php endif; ?>
 </body>
 </html>

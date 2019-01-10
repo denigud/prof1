@@ -1,8 +1,13 @@
 <?php
 session_start();
 include_once __DIR__."/functions.php";
-?>
 
+if(сheckPassword($_POST['login'], $_POST['password'])) {
+    $_SESSION['user'] = $_POST['login'];
+    header('Location: /5/');
+    exit;
+};
+?>
 <!doctype html>
 <html lang="ru">
 <head>
@@ -15,11 +20,10 @@ include_once __DIR__."/functions.php";
 <body>
 
 <?php
-if(сheckPassword($_POST['login'], $_POST['password'])){
-    $_SESSION['user'] = $_POST['login'];
-    echo "login " . $_SESSION['user'];
-    header('Location: /5/');
-}else{
+//if(сheckPassword($_POST['login'], $_POST['password'])){
+//    $_SESSION['user'] = $_POST['login'];
+//    header('Location: /5/');
+//}else{
 ?>
 <form action="/5/login.php" method="POST">
     <input type="text" name="login" title="Login">
@@ -27,10 +31,7 @@ if(сheckPassword($_POST['login'], $_POST['password'])){
     <button type="submit">Войти</button>
 </form>
 <?php
-};
+//};
 ?>
-
-
-
 </body>
 </html>
