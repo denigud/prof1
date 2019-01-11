@@ -11,7 +11,7 @@ namespace TextFile;
 
 class TextFile
 {
-    public function readFile($file)
+    public function myReadFile($file)
     {
         return file($file, FILE_IGNORE_NEW_LINES);
     }

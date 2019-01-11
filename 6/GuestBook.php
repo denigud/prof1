@@ -11,7 +11,7 @@ class GuestBook extends TextFile
 
     public function __construct($file)
     {
-        $this->data = readFile($file);
+        $this->data = $this->myReadFile($file);
     }
 
     /**
