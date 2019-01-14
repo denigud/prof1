@@ -21,9 +21,13 @@ class News
     public function __construct($path)
     {
         $this->path = $path;
-        $lines = file($this->path, FILE_IGNORE_NEW_LINES);
+        $lines = file($this->path.'news.txt', FILE_IGNORE_NEW_LINES);
         foreach ($lines as $key => $line){
-            $this->data[] = new Article($key, $line);
+            $record = new Article($key, $line);
+            if(file_exists($this->path.$key.'.txt')) {
+                $record->setText(file_get_contents($this->path . $key . '.txt'));
+            };
+            $this->data[] = $record;
         }
         return $this;
     }
@@ -45,10 +49,11 @@ class News
     public function save()
     {
         $lines = [];
-        foreach ($this->data as $record){
+        foreach ($this->data as $key => $record){
             $lines[] = $record->getTitle();
+            file_put_contents($this->path.$key.'.txt', $record->getText());
         }
-        file_put_contents($this->path, implode("\n", $lines));
+        file_put_contents($this->path.'news.txt', implode("\n", $lines));
         return $this;
     }
 

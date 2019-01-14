@@ -6,17 +6,20 @@ require_once __DIR__.'/classes/Article.php';
 use News\News;
 use View\View;
 
-$news = new News(__DIR__.'/data/data.txt');
+$news = new News(__DIR__.'/data/');
 
 ob_start();
 
 echo '<form action="/7/append.php" method="post">';
-echo '<input type="text" name="record">';
-echo '<button type="submit">Добавить</button>';
+echo 'Заголовок: <input type="text" name="title">';
+echo ' Краткое описание: <textarea name="text"></textarea>';
+echo ' <button type="submit">Добавить</button>';
 echo '</form>';
+echo '<br>';
 
 foreach ($news->getData() as $record){
-    echo $record->getTitle();
+    echo '<a href='.'/7/article.php?id='.$record->getId().'><h1>'.$record->getTitle().'</h1></a>';
+    echo $record->getText();
     echo '<hr>';
 };
 
