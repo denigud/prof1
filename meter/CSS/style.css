@@ -5,10 +5,10 @@
     position: absolute;
 }
 
-.bg-info>.card-header>a .bg-danger>.card-header>a{
+.bg-info .card-header>a, .bg-danger .card-header>a{
     color: #fff;
 }
 
-.bg-warning>.card-header>a {
-    color: blue;
+.bg-warning .card-header>a {
+    color: #005cbf;
 }
