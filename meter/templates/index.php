@@ -1,10 +1,15 @@
 <? include __DIR__ . '/header.php'?>
 
-<h2>Показания счетчиков</h2>
+<div class="card text-center">
+    <div class="card-header">
+        <h2>Показания счетчиков</h2>
+    </div>
+</div>
 
 <div class="main">
     <div class="card-deck">
-        <?php foreach ($this->data['data'] as $meter):?>
+        <?php foreach ($this->data['meters'] as $value):?>
+            <?php $meter = $value->getData();?>
             <div class="card text-white bg-<?php echo $meter['cardStyle']?> mb-3">
                 <div class="card-header"><a href="<?php echo $meter['site']?>"><?php echo $meter['title'] ?></a>
                     <img src="<?php echo $meter['image'] ?>" class="card-img-top" alt="...">
@@ -20,7 +25,7 @@
                         </thead>
                         <tbody>
                         <?php foreach ($this->data['meterReading'] as $meterReading):?>
-                            <?php if($meterReading['meterId'] == $meter['id']):?>
+                            <?php if($meterReading['meterId'] == $value->getId()):?>
                             <tr>
                                 <th scope="row"><?php echo $meterReading['date']?></th>
                                 <td><?php echo $meterReading['reading']?></td>

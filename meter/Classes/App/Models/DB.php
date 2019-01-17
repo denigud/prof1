@@ -32,7 +32,7 @@ class DB
     {
         $sth = $this->dbh->prepare($sql);
         if ($sth->execute($data)){
-            return $sth->fetchAll();
+            return $sth->fetchAll(\PDO::FETCH_ASSOC);
         };
         return false;
     }
