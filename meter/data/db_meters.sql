@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Янв 17 2019 г., 01:04
+-- Время создания: Янв 17 2019 г., 11:04
 -- Версия сервера: 5.6.41
 -- Версия PHP: 7.2.10
 
@@ -32,17 +32,18 @@ CREATE TABLE `meters` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `title` varchar(255) NOT NULL,
   `site` varchar(255) NOT NULL,
-  `image` varchar(255) NOT NULL
+  `image` varchar(255) NOT NULL,
+  `cardStyle` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `meters`
 --
 
-INSERT INTO `meters` (`id`, `title`, `site`, `image`) VALUES
-(1, 'Водоканал', 'http://www.vodokanal.zp.ua', 'http://www.vodokanal.zp.ua/img/logo.png?t=1547669402.5909'),
-(2, 'Теплосети', 'http://teploseti.zp.ua', 'http://teploseti.zp.ua/bitrix/templates/inside_ru/images/logo.png'),
-(3, 'Запорожьеоблэнерго', 'http://www.zoe.com.ua', 'http://www.zoe.com.ua/wp-content/themes/zoetheme/img/zoe_logo-min.png');
+INSERT INTO `meters` (`id`, `title`, `site`, `image`, `cardStyle`) VALUES
+(1, 'Водоканал', 'http://www.vodokanal.zp.ua', 'http://www.vodokanal.zp.ua/img/logo.png?t=1547669402.5909', 'info'),
+(2, 'Теплосети', 'http://teploseti.zp.ua', 'http://teploseti.zp.ua/bitrix/templates/inside_ru/images/logo.png', 'danger'),
+(3, 'Запорожьеоблэнерго', 'http://www.zoe.com.ua', 'http://www.zoe.com.ua/wp-content/themes/zoetheme/img/zoe_logo-min.png', 'warning');
 
 -- --------------------------------------------------------
 
