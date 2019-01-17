@@ -5,7 +5,7 @@
 <div class="main">
     <div class="card-deck">
         <?php foreach ($this->data['data'] as $meter):?>
-            <div class="card border-primary mb-3">
+            <div class="card text-white bg-<?php echo $meter['cardStyle']?> mb-3">
                 <div class="card-header"><a href="<?php echo $meter['site']?>"><?php echo $meter['title'] ?></a>
                     <img src="<?php echo $meter['image'] ?>" class="card-img-top" alt="...">
                 </div>

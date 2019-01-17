@@ -4,3 +4,11 @@
     right: 1px;
     position: absolute;
 }
+
+.bg-info>.card-header>a .bg-danger>.card-header>a{
+    color: #fff;
+}
+
+.bg-warning>.card-header>a {
+    color: blue;
+}
