@@ -3,12 +3,9 @@
     height: 15%;
     right: 1px;
     position: absolute;
+    top: 2%;
 }
 
-.bg-info .card-header>a, .bg-danger .card-header>a{
+.bg-info .card-header>a, .bg-danger .card-header>a, .bg-warning .card-header>a{
     color: #fff;
-}
-
-.bg-warning .card-header>a {
-    color: #005cbf;
 }

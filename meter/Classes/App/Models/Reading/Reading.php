@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Models\Meter;
+namespace App\Models\Reading;
 
 use App\Models\DB;
 
-class Meter
+class Reading
 {
 
     protected $id = null;
@@ -19,6 +19,21 @@ class Meter
         return $this;
     }
 
+    /**
+     * @param array $data
+     */
+    public function setData(array $data)
+    {
+        foreach ($data as $key => $value) {
+            if($key == 'id'){
+                continue;
+            }
+            $this->data[$key] = $value;
+        }
+
+        return $this;
+    }
+
     public function save()
     {
         $dbh = new DB();
@@ -28,11 +43,11 @@ class Meter
         }
 
         if ($this->id == null) {
-            $dbh->query('INSERT INTO meters (title, site, image, cardStyle) VALUES (:title, :site, :image, :cardStyle)', $params);
+            $dbh->query('INSERT INTO t_reading (meterId, date, reading) VALUES (:meterId, :date, :reading)', $params);
 
         } else {
             $params['id'] = $this->id;
-            $dbh->query('UPDATE meters SET title=:title, site=:site, image=:image, cardStyle=:cardStyle WHERE id=:id', $params);
+            $dbh->query('UPDATE t_reading SET meterId=:meterId, date=:date, reading=:reading WHERE id=:id', $params);
         };
 
         return $this;
@@ -55,19 +70,12 @@ class Meter
         return $this->data;
     }
 
-    /**
-     * @param array $data
-     */
-    public function setData(array $data)
+    public static function delete($id)
     {
-        foreach ($data as $key => $value) {
-            if($key == 'id'){
-                continue;
-            }
-            $this->data[$key] = $value;
-        }
+        $dbh = new DB();
+        $params = [];
+        $params [':id'] = $id;
 
-        return $this;
+        return $dbh->query('DELETE FROM t_reading WHERE id=:id', $params);;
     }
-
 }

@@ -25,20 +25,18 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <?php foreach ($this->data['meterReading'] as $meterReading):?>
+                        <?php foreach ($this->data['meterReading'] as $valueReading):?>
+                            <?php $meterReading = $valueReading->getData();?>
                             <?php if($meterReading['meterId'] == $value->getId()):?>
                             <tr>
                                 <th scope="row"><?php echo $meterReading['date']?></th>
                                 <td><?php echo $meterReading['reading']?></td>
-                                <td>
-                                    <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                                        <button type="button" class="btn btn-primary btn-sm"><span>
-                                            <span><img src="/meter/ico/pen_1.png" alt="Edit"></span>
-                                        </button>
-                                        <button type="button" class="btn btn-secondary btn-sm">
-                                            <span><img src="/meter/ico/circle_delete.png" alt="Delete"></span>
-                                        </button>
-                                    </div>
+                                <td style="width:140px; text-align: center">
+                                    <form action="deleteReading.php" method="POST">
+                                        <input type = "text" name = "id" value ="<?php echo $valueReading->getId()?>" hidden />
+                                        <button type="submit" class="btn btn-primary btn-xs" data-title="Edit" data-target="#edit"><span class="glyphicon glyphicon-pencil"></span></button>
+                                        <button type="submit" class="btn btn-danger btn-xs" data-title="Delete" data-target="#delete"><span class="glyphicon glyphicon-trash"></span></button>
+                                    </form>
                                 </td>
                             </tr>
                             <?php endif;?>
@@ -49,22 +47,22 @@
                     <p class="card-text"></p>
                 </div>
                 <div class="card-footer">
-                    <form>
+                    <form method="post" action="addReading.php">
+                        <input type = "text" name = "meterId" value ="<?php echo $value->getId()?>" hidden />
                         <div class="row">
                             <div class="col">
-                                <input type="date" class="form-control" placeholder="Date">
+                                <input type="date" class="form-control" placeholder="Date" name="date">
                             </div>
                             <div class="col">
-                                <input type="text" class="form-control" placeholder="Reading">
+                                <input type="text" class="form-control" placeholder="Reading" name="reading">
                             </div>
                             <div class="col">
-                                <button type="button" class="btn btn-success">
-                                    <span><img src="/meter/ico/circle_plus.png" alt="Add"></span>
+                                <button type="submit" class="btn btn-success">
+                                    <span class="glyphicon glyphicon-plus"></span>
                                 </button>
                             </div>
                         </div>
                     </form>
-                    <!--<small class="text-muted">Last updated 3 mins ago</small>-->
                 </div>
             </div>
         <?php endforeach;?>
