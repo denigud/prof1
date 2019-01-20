@@ -1,10 +1,10 @@
 <?php
 
-use App\Models\Reading\Reading;
+use App\Models\Meters\Reading;
 
-require __DIR__ . '/autoload.php';
+require __DIR__ . '/App/autoload.php';
 
-Reading::delete($_POST['id']);
+Reading::delete($_GET['id']);
 
 header('Location: /meter/');
 exit;
