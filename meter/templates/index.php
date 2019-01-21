@@ -31,8 +31,8 @@
                                 <th scope="row"><?php echo $meterReading->date?></th>
                                 <td><?php echo $meterReading->reading?></td>
                                 <td style="width:140px; text-align: center">
-                                    <a class="btn btn-primary btn-xs" href="/meter/?ctrl=Reading&id=<?=$meterReading->id?>"><span class="fas fa-edit"></span></span></a>
-                                    <a class="btn btn-danger btn-xs" href="deleteReading.php?id=<?=$meterReading->id?>"><span class="fas fa-trash-alt"></span></span></a>
+                                    <a class="btn btn-primary btn-xs" href="/?ctrl=Reading&id=<?=$meterReading->id?>"><span class="fas fa-edit"></span></span></a>
+                                    <a class="btn btn-danger btn-xs" href="/?ctrl=Delete&id=<?=$meterReading->id?>"><span class="fas fa-trash-alt"></span></span></a>
                                 </td>
                             </tr>
                             <?php endif;?>
@@ -43,7 +43,7 @@
                     <p class="card-text"></p>
                 </div>
                 <div class="card-footer">
-                    <form method="post" action="addReading.php">
+                    <form method="post" action="/?ctrl=Add">
                         <input type = "text" name = "meterId" value ="<?php echo $meter->id?>" hidden>
                         <div class="row">
                             <div class="col">

@@ -2,7 +2,7 @@
     <?php $reading = $this->reading?>
     <div class="main">
 
-        <form action="/meter/addReading.php" method="post">
+        <form action="/?ctrl=Add" method="post">
             <input type = "text" name = "id" value ="<?php echo $reading->id?>" hidden />
             <input type = "text" name = "meterId" value ="<?php echo $reading->meterId?>" hidden />
 
