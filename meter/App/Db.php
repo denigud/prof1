@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Exceptions\DbException;
+
 class Db
 {
 
@@ -24,8 +26,10 @@ class Db
     public function query(string $sql, $data = [], $class)
     {
         $sth = $this->dbh->prepare($sql);
-        if ($sth->execute($data)){
+        if ($sth->execute($data)) {
             return $sth->fetchAll(\PDO::FETCH_CLASS, $class);
+        }else{
+            throw new DbException($sql, 'Запрос не может быть выполнен');
         };
         return false;
     }

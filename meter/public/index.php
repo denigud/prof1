@@ -7,9 +7,15 @@ $parts = explode('/', $uri);
 
 $ctrl = $parts[1] ? ucfirst($parts[1]) : 'Index';
 
-$ctrl = $parts[2] ? ($parts[2] == 'css' ? 'Index' : $ctrl) : $ctrl;
+try{
 
-$class = '\App\Controllers\\' . $ctrl;
+    $class = '\App\Controllers\\' . $ctrl;
+    $ctrl = new $class;
+    $ctrl();
 
-$ctrl = new $class;
-$ctrl();
+}catch (\App\Exceptions\DbException $error){
+
+    echo 'Ошибка в БД при выполнении запроса: ' . $error->getMessage();
+    die;
+
+}
