@@ -2,7 +2,12 @@
 
 require __DIR__ . '/../App/autoload.php';
 
-$ctrl = $_GET['ctrl'] ?? 'Index';
+$uri = $_SERVER['REQUEST_URI'];
+$parts = explode('/', $uri);
+
+$ctrl = $parts[1] ? ucfirst($parts[1]) : 'Index';
+
+$ctrl = $parts[2] ? ($parts[2] == 'css' ? 'Index' : $ctrl) : $ctrl;
 
 $class = '\App\Controllers\\' . $ctrl;
 
