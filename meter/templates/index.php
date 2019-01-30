@@ -31,8 +31,8 @@
                                 <th scope="row"><?php echo $meterReading->date?></th>
                                 <td><?php echo $meterReading->reading?></td>
                                 <td style="width:140px; text-align: center">
-                                    <a class="btn btn-primary btn-xs" href="/reading/?id=<?=$meterReading->id?>"><span class="fas fa-edit"></span></span></a>
-                                    <a class="btn btn-danger btn-xs" href="/delete/?id=<?=$meterReading->id?>"><span class="fas fa-trash-alt"></span></span></a>
+                                    <a class="btn btn-primary btn-xs" href="/reading/?id=<?=$meterReading->id?>"><span class="fas fa-edit"></span></a>
+                                    <a class="btn btn-danger btn-xs" href="/delete/?id=<?=$meterReading->id?>"><span class="fas fa-trash-alt"></span></a>
                                 </td>
                             </tr>
                             <?php endif;?>
@@ -66,6 +66,8 @@
 </div>
 
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="<?php echo $this->meterReading[0]->id;?>" data-date="<?php echo $this->meterReading[0]->date;?>" data-whatever="<?php echo $this->meterReading[0]->id;?>" data-reading="<?php echo $this->meterReading[0]->reading;?>">Показание на <?php echo $this->meterReading[0]->date;?></button>
+
+<a class="btn btn-primary btn-lg" href='/Meter.php/'><span class="fas fa-edit">Сайты</span></a>
 
 <div class="modal modal-open fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">

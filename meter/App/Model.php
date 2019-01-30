@@ -17,6 +17,14 @@ abstract class Model
         return $dbh->query($sql, [],static::class);
     }
 
+    public static function getEachData()
+    {
+        $dbh = new Db();
+        $sql = 'SELECT * FROM ' . static::TABLE .' '. static::SUBSTRING_SQL_QUERY;
+
+        return $dbh->queryEach($sql, [],static::class);
+    }
+
     /**
      * @return boolean
      */
