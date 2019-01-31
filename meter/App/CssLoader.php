@@ -14,7 +14,7 @@ class CssLoader
         $css = '';
 
         foreach (glob('css/*.css') as $file){
-            $css .= '<link href="' . $file . '" rel="stylesheet" />' . "\n";
+            $css .= '<link href="/' . $file . '" rel="stylesheet" />' . "\n";
         }
 
         echo $css;

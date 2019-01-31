@@ -19,14 +19,16 @@ class AdminDataTable extends Controller
     {
         $this->models = $models;
         $this->functions = $functions;
+        $this->view = new View();
     }
 
     public function render($templates)
     {
+
         $this->view->models = $this->models;
         $this->view->functions = $this->functions;
 
-        $this->view->render($templates);
+        $this->view->display($templates);
 
     }
 

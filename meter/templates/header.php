@@ -11,3 +11,13 @@
     <title>Meter</title>
 </head>
 <body>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <?php if($_SERVER ["REQUEST_URI"] == '/'):?>
+        <li class="breadcrumb-item active" aria-current="page">Home</li>
+        <?php else:?>
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page"><?=trim($_SERVER ["REQUEST_URI"],'/')?></li>
+        <?endif;?>
+    </ol>
+</nav>

@@ -3,9 +3,17 @@
 require __DIR__ . '/../App/autoload.php';
 
 $uri = $_SERVER['REQUEST_URI'];
+
 $parts = explode('/', $uri);
 
-$ctrl = $parts[1] ? ucfirst($parts[1]) : 'Index';
+$uri = explode('-', ($parts[1]));
+
+$uri = array_map(function($word) { return ucfirst($word); }, $uri);
+
+$uri = implode('', $uri);
+
+$ctrl = $uri ? ucfirst($uri) : 'Index';
+
 
 try{
 
