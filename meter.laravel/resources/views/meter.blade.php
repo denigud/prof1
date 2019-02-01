@@ -40,16 +40,8 @@
                                                     {{--<a class="btn btn-primary btn-xs" href="/reading/?id={{ $meterReading->id }}"><span class="fas fa-edit"></span></a>--}}
                                                     {{--<a class="btn btn-danger btn-xs" href="{{ url('meter-reading/delete/'.$meterReading->id) }}"><input type="hidden" name="_method" value="DELETE"><span class="fas fa-trash-alt"></span></a>--}}
                                                 {{--</td>--}}
-                                                <td>
-                                                    <form action="{{ url('meter-reading/edit/'.$meterReading->id) }}" method="POST">
-                                                        {{ csrf_field() }}
-                                                        {{ method_field('EDIT') }}
-                                                        <input type="hidden" name="_method" value="EDIT">
-                                                        <button type="submit" class="btn btn-primary">
-                                                            <i class="fa fa-edit"></i>
-                                                        </button>
-                                                    </form>
-                                                </td>
+                                                <td><a href="{{ url('meter-reading/edit/'.$meterReading->id) }}" class="btn btn-warning"><i class="fa fa-edit"></i></a></td>
+
                                                 <td>
                                                     <form action="{{ url('meter-reading/delete/'.$meterReading->id) }}" method="POST">
                                                         {{ csrf_field() }}

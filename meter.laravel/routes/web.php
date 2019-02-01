@@ -39,6 +39,26 @@ Route::post('/meter-reading/add', function (Request $request) {
     return redirect('/');
 });
 
+Route::post('/meter-reading/update/{meterReading}', function (Request $request) {
+
+    $validator = Validator::make($request->all(), [
+        'date' => 'required|date',
+        'reading' => 'required|numeric',
+    ]);
+
+    if ($validator->fails()) {
+        return redirect('/')
+            ->withInput()
+            ->withErrors($validator);
+    }
+
+    $meterReading = MeterReading::find($request->id);
+    $meterReading->date = $request->date;
+    $meterReading->reading = $request->reading;
+    $meterReading->save();
+
+    return redirect('/');
+});
 
 Route::delete('/meter-reading/delete/{meterReading}', function (MeterReading $meterReading) {
     $meterReading->delete();
@@ -47,7 +67,7 @@ Route::delete('/meter-reading/delete/{meterReading}', function (MeterReading $me
 });
 
 
-Route::edit('/meter-reading/edit/{meterReading}', function (MeterReading $meterReading) {
+Route::get('/meter-reading/edit/{meterReading}', function (MeterReading $meterReading) {
 
     return view('edit', [
         'meterReading' => $meterReading,

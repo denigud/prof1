@@ -3,10 +3,11 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="flex-center position-ref full-height">
+    <div class="content">
 
-    <div class="main">
-
-        <form action="/" method="post">
+        <form action="{{ url('meter-reading/update/'. $meterReading->id) }}" method="post">
+            {{ csrf_field() }}
             <input type = "text" name = "id" value ="{{ $meterReading->id }}" hidden />
             <input type = "text" name = "meterId" value ="{{ $meterReading->meterId }}" hidden />
 
@@ -24,5 +25,5 @@
         </form>
 
     </div>
-
+</div>
 @endsection
