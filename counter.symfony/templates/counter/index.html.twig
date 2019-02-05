@@ -1,0 +1,8 @@
+{# templates/counter/index.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    @foreach (counters as $counter)
+    <h1>{{ counter }}</h1>
+    @endforeach
+{% endblock %}
