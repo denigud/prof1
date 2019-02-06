@@ -2,7 +2,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    @foreach (counters as $counter)
+    {% for counter in counters %}
     <h1>{{ counter }}</h1>
-    @endforeach
+    {% endfor %}
 {% endblock %}

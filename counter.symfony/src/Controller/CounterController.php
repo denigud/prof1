@@ -8,6 +8,7 @@
 
 namespace App\Controller;
 
+use App\Repository\MetersRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -16,10 +17,11 @@ class CounterController extends AbstractController
 
     protected $counters = [];
     /**
-     * @Route("/")
+     * @Route("/counter")
      */
     public function index()
     {
+        $this->counters = (new MeterController())->findAll();
         return $this->render('counter/index.html.twig',[
             'counters' => $this->counters,
         ]);

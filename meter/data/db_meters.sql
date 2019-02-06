@@ -40,7 +40,7 @@ CREATE TABLE `meters` (
 -- Дамп данных таблицы `meters`
 --
 
-INSERT INTO `meters` (`id`, `title`, `site`, `image`, `cardStyle`) VALUES
+INSERT INTO `meters` (`id`, `title`, `site`, `image`, cardstyle) VALUES
 (1, 'Водоканал', 'http://www.vodokanal.zp.ua', 'http://www.vodokanal.zp.ua/img/logo.png?t=1547669402.5909', 'info'),
 (2, 'Теплосети', 'http://teploseti.zp.ua', 'http://teploseti.zp.ua/bitrix/templates/inside_ru/images/logo.png', 'danger'),
 (3, 'Запорожьеоблэнерго', 'http://www.zoe.com.ua', 'http://www.zoe.com.ua/wp-content/themes/zoetheme/img/zoe_logo-min.png', 'warning');
@@ -51,7 +51,7 @@ INSERT INTO `meters` (`id`, `title`, `site`, `image`, `cardStyle`) VALUES
 -- Структура таблицы `t_reading`
 --
 
-CREATE TABLE `t_reading` (
+CREATE TABLE `reading` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `meterId` int(11) NOT NULL,
   `date` date NOT NULL,
@@ -59,10 +59,10 @@ CREATE TABLE `t_reading` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `t_reading`
+-- Дамп данных таблицы `reading`
 --
 
-INSERT INTO `t_reading` (`id`, `meterId`, `date`, `reading`) VALUES
+INSERT INTO `reading` (`id`, meterid, `date`, `reading`) VALUES
 (3, 1, '2019-01-01', 631.197),
 (4, 2, '2019-01-01', 695.925),
 (5, 3, '2019-01-01', 2401.1);
@@ -78,9 +78,9 @@ ALTER TABLE `meters`
   ADD UNIQUE KEY `id` (`id`);
 
 --
--- Индексы таблицы `t_reading`
+-- Индексы таблицы `reading`
 --
-ALTER TABLE `t_reading`
+ALTER TABLE `reading`
   ADD UNIQUE KEY `id` (`id`);
 
 --
@@ -94,9 +94,9 @@ ALTER TABLE `meters`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT для таблицы `t_reading`
+-- AUTO_INCREMENT для таблицы `reading`
 --
-ALTER TABLE `t_reading`
+ALTER TABLE `reading`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 

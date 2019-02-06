@@ -15,7 +15,7 @@
         <div class="card-goup">
             @foreach ($meters as $meter)
                 <div class="card-deck">
-                    <div class="card text-white bg-{{ $meter->cardStyle }} mb-3">
+                    <div class="card text-white bg-{{ $meter->cardstyle }} mb-3">
                         <div class="card-header"><a href="{{ $meter->site }}">{{ $meter->title }}</a>
                             <img src="{{ $meter->image }}" class="card-img-top" alt="logo">
                         </div>
@@ -32,7 +32,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($meterReadings as $meterReading)
-                                        @if($meterReading->meterId == $meter->id)
+                                        @if($meterReading->meterid == $meter->id)
                                             <tr>
                                                 <th scope="row">{{ $meterReading->date }}</th>
                                                 <td>{{ $meterReading->reading }}</td>

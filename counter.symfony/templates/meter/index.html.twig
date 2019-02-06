@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Показания счетчиков{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+    <div class="panel-body flex-center position-ref full-height">
+        <div class="content">
+            <div class="title m-b-md">
+                Показания счетчиков
+            </div>
+            <div class="card-goup">
+                {% for counter in counters %}
+                <div class="card-deck">
+                    <div class="card text-white bg-{{ counter.cardstyle }} mb-3">
+                        <div class="card-header"><a href="{{ counter.site }}">{{ counter.title }}</a>
+                            <img src="{{ counter.image }}" class="card-img-top" alt="logo">
+                        </div>
+
+                        <div class="card-body">
+                            <table class="table table-sm">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Дата</th>
+                                    <th scope="col">Показание</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for reading in readings %}
+                                {% if(reading.meterId == counter.id) %}
+                                <tr>
+                                    <th scope="row">{{ reading.date|date('Y-m-d') }}</th>
+                                    <td>{{ reading.reading }}</td>
+                                    <td><a href="{{ 'url(edit/.reading.id)' }}" class="btn btn-warning"><i class="fa fa-edit"></i></a></td>
+
+                                    <td>
+                                        <form action="{{ 'url(delete/.reading.id)' }}" method="POST">
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <button type="submit" class="btn btn-danger">
+                                                <i class="fa fa-trash-alt"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                {% endif %}
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                            <h5 class="card-title"></h5>
+                            <p class="card-text"></p>
+                        </div>
+                        <div class="card-footer">
+                            <form method="post" action="{{ 'url(meter-reading/add)' }}">
+                                <input type = "text" name = "meterId" value ="{{ counter.id }}" hidden>
+                                <div class="row">
+                                    <div class="col">
+                                        <input type="date" class="form-control" placeholder="Date" name="date">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" class="form-control" placeholder="Reading" name="reading">
+                                    </div>
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-success">
+                                            <span  class="fas fa-plus"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

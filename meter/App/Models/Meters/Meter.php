@@ -13,6 +13,6 @@ class Meter extends Model
     public $title;
     public $site;
     public $image;
-    public $cardStyle;
+    public $cardstyle;
 
 }

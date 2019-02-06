@@ -10,7 +10,7 @@
 <div class="main">
     <div class="card-deck">
         <?php foreach ($this->meters as $meter):?>
-            <div class="card text-white bg-<?php echo $meter->cardStyle?> mb-3">
+            <div class="card text-white bg-<?php echo $meter->cardstyle?> mb-3">
                 <div class="card-header"><a href="<?php echo $meter->site?>"><?php echo $meter->title?></a>
                     <img src="<?php echo $meter->image?>" class="card-img-top" alt="logo">
                 </div>
@@ -26,7 +26,7 @@
                         </thead>
                         <tbody>
                         <?php foreach ($this->meterReading as $meterReading):?>
-                            <?php if($meterReading->meterId == $meter->id):?>
+                            <?php if($meterReading->meterid == $meter->id):?>
                             <tr>
                                 <th scope="row"><?php echo $meterReading->date?></th>
                                 <td><?php echo $meterReading->reading?></td>

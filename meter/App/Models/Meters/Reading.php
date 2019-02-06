@@ -8,7 +8,7 @@ use App\Model;
 class Reading extends Model
 {
 
-    public const TABLE = 't_reading';
+    public const TABLE = 'reading';
     public const SUBSTRING_SQL_QUERY = 'ORDER BY date DESC';
 
     public $meterId;
