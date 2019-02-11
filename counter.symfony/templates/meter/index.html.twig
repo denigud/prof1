@@ -38,15 +38,15 @@
                                     <th scope="row">{{ reading.date|date('Y-m-d') }}</th>
                                     <td>{{ reading.reading }}</td>
                                     <td><a href="{{ 'url(edit/.reading.id)' }}" class="btn btn-warning"><i class="fa fa-edit"></i></a></td>
+                                    <td><a href="/reading/delete/{{ reading.id }}" class="btn btn-danger"><i class="fa fa-trash-alt"></i></a></td>
+                                    {#<td>
 
-                                    <td>
-                                        <form action="{{ 'url(delete/.reading.id)' }}" method="POST">
-                                            <input type="hidden" name="_method" value="DELETE">
+                                        <form action='/reading/delete/'{{ reading.id }} method="POST">
                                             <button type="submit" class="btn btn-danger">
                                                 <i class="fa fa-trash-alt"></i>
                                             </button>
                                         </form>
-                                    </td>
+                                    </td>#}
                                 </tr>
                                 {% endif %}
                                 {% endfor %}
@@ -56,14 +56,14 @@
                             <p class="card-text"></p>
                         </div>
                         <div class="card-footer">
-                            <form method="post" action="{{ 'url(meter-reading/add)' }}">
+                            <form method="post" action="/reading">
                                 <input type = "text" name = "meterId" value ="{{ counter.id }}" hidden>
                                 <div class="row">
                                     <div class="col">
                                         <input type="date" class="form-control" placeholder="Date" name="date">
                                     </div>
                                     <div class="col">
-                                        <input type="text" class="form-control" placeholder="Reading" name="reading">
+                                        <input type="text" class="form-control" placeholder="Reading" name="count">
                                     </div>
                                     <div class="col">
                                         <button type="submit" class="btn btn-success">
