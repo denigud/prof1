@@ -31,8 +31,8 @@
                                 <th scope="row"><?php echo $meterReading->date?></th>
                                 <td><?php echo $meterReading->reading?></td>
                                 <td style="width:140px; text-align: center">
-                                    <a class="btn btn-primary btn-xs" href="/reading/?id=<?=$meterReading->id?>"><span class="fas fa-edit"></span></a>
-                                    <a class="btn btn-danger btn-xs" href="/delete/?id=<?=$meterReading->id?>"><span class="fas fa-trash-alt"></span></a>
+                                    <a class="btn btn-primary btn-xs" href="/reading/?id=<?php echo $meterReading->id?>"><span class="fas fa-edit"></span></a>
+                                    <a class="btn btn-danger btn-xs" href="/delete/?id=<?php echo $meterReading->id?>"><span class="fas fa-trash-alt"></span></a>
                                 </td>
                             </tr>
                             <?php endif;?>
@@ -65,37 +65,6 @@
     </div>
 </div>
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="<?php echo $this->meterReading[0]->id;?>" data-date="<?php echo $this->meterReading[0]->date;?>" data-whatever="<?php echo $this->meterReading[0]->id;?>" data-reading="<?php echo $this->meterReading[0]->reading;?>">Показание на <?php echo $this->meterReading[0]->date;?></button>
-
 <a class="btn btn-primary btn-lg" href='/admin-meter/'><span class="fas fa-edit">Сайты</span></a>
-
-<div class="modal modal-open fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Показания</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label for="recipient-date" class="col-form-label">Дата:</label>
-                        <input type="date" class="form-control" id="recipient-date">
-                    </div>
-                    <div class="form-group">
-                        <label for="recipient-reading" class="col-form-label">Показание:</label>
-                        <input type="text" class="form-control" id="recipient-reading">
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
-                <button type="button" class="btn btn-primary">Сохранить</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 <?php include __DIR__ . '/footer.php'?>

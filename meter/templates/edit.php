@@ -3,7 +3,7 @@
         <?php $reading = $this->reading?>
         <div class="main">
 
-            <form action="/?ctrl=Add" method="post">
+            <form action="/add/?id=<?php echo $reading->id?>" method="post">
                 <input type = "text" name = "id" value ="<?php echo $reading->id?>" hidden />
                 <input type = "text" name = "meterId" value ="<?php echo $reading->meterId?>" hidden />
 

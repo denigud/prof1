@@ -37,16 +37,8 @@
                                 <tr>
                                     <th scope="row">{{ reading.date|date('Y-m-d') }}</th>
                                     <td>{{ reading.reading }}</td>
-                                    <td><a href="{{ 'url(edit/.reading.id)' }}" class="btn btn-warning"><i class="fa fa-edit"></i></a></td>
+                                    <td><a href="/reading/{{ reading.id }}" class="btn btn-warning"><i class="fa fa-edit"></i></a></td>
                                     <td><a href="/reading/delete/{{ reading.id }}" class="btn btn-danger"><i class="fa fa-trash-alt"></i></a></td>
-                                    {#<td>
-
-                                        <form action='/reading/delete/'{{ reading.id }} method="POST">
-                                            <button type="submit" class="btn btn-danger">
-                                                <i class="fa fa-trash-alt"></i>
-                                            </button>
-                                        </form>
-                                    </td>#}
                                 </tr>
                                 {% endif %}
                                 {% endfor %}

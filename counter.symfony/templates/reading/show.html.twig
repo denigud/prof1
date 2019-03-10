@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block title %}Показания счетчиков{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+    <div class="main">
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+
+        {#{{ form_row(form.Id) }}#}
+        {#{{ form_row(form.meterId) }}#}
+        {{ form_row(form.date) }}
+        {{ form_row(form.reading) }}
+
+    {{ form_end(form) }}
+    </div>
+    </div>
+
+{% endblock %}

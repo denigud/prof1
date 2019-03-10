@@ -4,9 +4,11 @@ namespace App\Controller;
 
 use App\Entity\Reading;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class ReadingController extends AbstractController
 {
@@ -23,14 +25,50 @@ class ReadingController extends AbstractController
         $reading->setDate(new \DateTime($request->request->get('date')));
         $reading->setReading($request->request->get('count'));
 
-        // скажите Doctrine, что вы (в итоге) хотите сохранить Товар (пока без запросов)
         $em->persist($reading);
 
-        // на самом деле выполнить запросы (т.е. запрос INSERT)
         $em->flush();
 
-        //return new Response('Saved new reading with id '.$reading->getId());
         return $this->redirect('/');
+    }
+
+
+    /**
+     * @Route("/reading/{id}", name="reading_show")
+     */
+    public function showAction($id, Request $request)
+    {
+
+        $reading = $this->getDoctrine()
+            ->getRepository(Reading::class)
+            ->find($id);
+
+        if (!$reading) {
+            throw $this->createNotFoundException(
+                'No product found for id '.$id
+            );
+        }
+
+        $form = $this->createFormBuilder($reading)
+            ->add('date', DateType::class)
+            ->add('reading', TextType::class)
+            ->add('save', SubmitType::class, array('label' => 'Сохранить'))
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $task = $form->getData();
+
+             $em = $this->getDoctrine()->getManager();
+             $em->persist($task);
+             $em->flush();
+
+            return $this->redirect('/');
+        }
+
+        return $this->render('/reading/show.html.twig', ['form' => $form->createView(), 'reading' => $reading]);
     }
 
     /**
@@ -38,20 +76,24 @@ class ReadingController extends AbstractController
      */
     public function updateAction($id)
     {
+        $request = Request::createFromGlobals();
         $em = $this->getDoctrine()->getManager();
-        $product = $em->getRepository(Product::class)->find($id);
+        $reading = $em->getRepository(Reading::class)->find($id);
 
-        if (!$product) {
+        if (!$reading) {
             throw $this->createNotFoundException(
-                'No product found for id '.$id
+                'No reading found for id '.$id
             );
         }
 
-        $product->setName('New product name!');
+        $reading->setMeterId($request->request->get('meterId'));
+        $reading->setDate(new \DateTime($request->request->get('date')));
+        $reading->setReading($request->request->get('count'));
+
         $em->flush();
 
-        return $this->redirectToRoute('product_show', [
-            'id' => $product->getId()
+        return $this->redirectToRoute('reading_show', [
+            'id' => $reading->getId()
         ]);
     }
 

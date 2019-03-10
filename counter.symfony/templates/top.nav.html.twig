@@ -1,0 +1,9 @@
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        {% if (app.request.attributes.get('_route') == 'reading_show') %}
+            <li class="breadcrumb-item active" aria-current="page">Показания</li>
+        {% endif %}
+    </ol>
+</nav>
