@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/counter.symfony.iml" filepath="$PROJECT_DIR$/.idea/counter.symfony.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../counter.yii2/.idea/counter.yii2.iml" filepath="$PROJECT_DIR$/../counter.yii2/.idea/counter.yii2.iml" />
     </modules>
   </component>
 </project>
